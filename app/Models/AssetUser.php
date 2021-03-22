@@ -11,7 +11,7 @@ class AssetUser extends Model
 
     protected $fillable = ['name'];
 
-    public function assetUser(){
+    public function asset(){
         return $this->belongsTo(Asset::class);
     }
 }

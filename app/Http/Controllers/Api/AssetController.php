@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\CustomService\ResponseMessage;
 use App\Http\Controllers\Controller;
 use App\Models\Asset;
+use App\Models\AssetGroup;
 use Faker\Provider\DateTime;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
@@ -136,6 +137,20 @@ class AssetController extends Controller
 
         }
 
+
+    }
+
+
+    public function listGroup($id){
+
+            $asset = AssetGroup::where('id',$id)->with('asset')->get();
+
+            if(!$asset){
+                $response = ResponseMessage::errorMessage("asset group not found",$asset);
+                return response()->json($response, 404);
+            }
+            $response = ResponseMessage::successMessage("asset found",$asset);
+            return response()->json($response);
 
     }
 }
