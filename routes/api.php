@@ -47,5 +47,6 @@ Route::group(['prefix'=>'v1'], function(){
            Route::post('/groups/addassetGroup', [AssetController::class,'createGroup']);
            Route::post('/users/addassetUser', [AssetController::class,'createUser']);
            Route::get('/groups/{id}', [AssetController::class,'listGroup']);
+           Route::get('/users/{id}', [AssetController::class,'listUser']);
         });
    });

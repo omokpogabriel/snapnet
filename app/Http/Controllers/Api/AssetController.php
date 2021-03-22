@@ -6,6 +6,7 @@ use App\CustomService\ResponseMessage;
 use App\Http\Controllers\Controller;
 use App\Models\Asset;
 use App\Models\AssetGroup;
+use App\Models\AssetUser;
 use Faker\Provider\DateTime;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
@@ -151,6 +152,19 @@ class AssetController extends Controller
             }
             $response = ResponseMessage::successMessage("asset found",$asset);
             return response()->json($response);
+
+    }
+
+    public function listUser($id){
+
+        $asset = AssetUser::where('id',$id)->with('asset')->get();
+
+        if(!$asset){
+            $response = ResponseMessage::errorMessage("asset user not found",$asset);
+            return response()->json($response, 404);
+        }
+        $response = ResponseMessage::successMessage("asset found",$asset);
+        return response()->json($response);
 
     }
 }
