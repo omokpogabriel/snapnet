@@ -126,9 +126,9 @@ class AssetController extends Controller
         }
 
         try{
-            $asset = Asset::findOrFail($request->asset_id)
+            $asset = Asset::where('id',$request->asset_id)->first()
                 ->assetUser()->create([
-                    'name' => $request->name
+                    'name' => $request->name,
                 ]);
             $response = ResponseMessage::successMessage("asset user created successfully",$asset);
             return response()->json($response);

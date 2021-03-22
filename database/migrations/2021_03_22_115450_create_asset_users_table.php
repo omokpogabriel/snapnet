@@ -15,6 +15,7 @@ class CreateAssetUsersTable extends Migration
     {
         Schema::create('asset_users', function (Blueprint $table) {
             $table->bigInteger('id')->autoIncrement();
+            $table->string('name')->autoIncrement();
             $table->bigInteger('asset_id')->nullable(true);
             $table->timestamps();
 
