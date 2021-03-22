@@ -23,6 +23,15 @@ class AssetController extends Controller
         return Asset::get();
     }
 
+    public function AllGroups()
+    {
+        return AssetGroup::get();
+    }
+    public function AllUsers()
+    {
+        return AssetUser::get();
+    }
+
     /**
      * Show the form for creating a new resource.
      *

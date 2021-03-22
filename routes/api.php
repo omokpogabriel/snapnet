@@ -41,6 +41,8 @@ Route::group(['prefix'=>'v1'], function(){
         });
 
         Route::group(['prefix'=> '/assets'], function(){
+            Route::get('/users', [AssetController::class,'AllUsers']);
+            Route::get('/groups', [AssetController::class,'AllGroups']);
            Route::get('/', [AssetController::class,'index']);
            Route::post('/', [AssetController::class,'store']);
            Route::get('/{id}', [AssetController::class,'show']);
@@ -48,5 +50,6 @@ Route::group(['prefix'=>'v1'], function(){
            Route::post('/users/addassetUser', [AssetController::class,'createUser']);
            Route::get('/groups/{id}', [AssetController::class,'listGroup']);
            Route::get('/users/{id}', [AssetController::class,'listUser']);
+
         });
    });
